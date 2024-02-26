@@ -402,3 +402,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 appsettings.Development.json
+/src/tobeto2A.RentACar/WebAPI/appsettings.Staging.json
