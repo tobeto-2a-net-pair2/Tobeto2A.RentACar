@@ -50,6 +50,49 @@ namespace Persistence.Migrations
                     b.ToTable("Brands", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.Car", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CarState")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ColorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Kilometer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ModelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<short>("ModelYear")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("Plate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ModelId");
+
+                    b.ToTable("Cars", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.EmailAuthenticator", b =>
                 {
                     b.Property<Guid>("Id")
@@ -86,6 +129,74 @@ namespace Persistence.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("EmailAuthenticators", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.Fuel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Fuels", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.Model", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BrandId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("DailyPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("FuelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TransmissionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<short>("Year")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId")
+                        .IsUnique();
+
+                    b.HasIndex("FuelId")
+                        .IsUnique();
+
+                    b.HasIndex("TransmissionId")
+                        .IsUnique();
+
+                    b.ToTable("Models", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.OperationClaim", b =>
@@ -358,6 +469,30 @@ namespace Persistence.Migrations
                     b.ToTable("RefreshTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Domain.Entities.Transmission", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Transmissions", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -403,12 +538,12 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0dfbea2d-4703-4751-b1d9-8e00076d977c"),
+                            Id = new Guid("ff3bd80f-bfc4-4e4b-b5ea-d974715a2a12"),
                             AuthenticatorType = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "narch@kodlama.io",
-                            PasswordHash = new byte[] { 91, 95, 201, 107, 171, 236, 194, 153, 147, 193, 56, 238, 39, 58, 210, 111, 8, 40, 125, 15, 148, 127, 64, 113, 194, 59, 166, 85, 147, 121, 83, 233, 217, 132, 14, 38, 116, 148, 254, 201, 195, 13, 208, 38, 86, 101, 121, 169, 122, 175, 141, 101, 116, 219, 196, 252, 117, 208, 23, 107, 185, 38, 10, 229 },
-                            PasswordSalt = new byte[] { 202, 210, 154, 6, 133, 181, 176, 141, 236, 195, 124, 181, 234, 66, 101, 8, 103, 195, 187, 120, 54, 49, 1, 85, 173, 71, 194, 117, 27, 80, 164, 140, 135, 122, 31, 162, 197, 188, 201, 81, 125, 100, 10, 149, 216, 67, 133, 67, 81, 198, 55, 38, 98, 16, 136, 108, 153, 49, 97, 125, 31, 159, 113, 156, 4, 213, 61, 183, 235, 48, 249, 159, 88, 87, 137, 219, 62, 239, 207, 33, 93, 48, 240, 39, 80, 221, 24, 198, 19, 105, 139, 186, 223, 25, 30, 151, 78, 11, 229, 38, 15, 46, 105, 4, 218, 44, 23, 146, 40, 110, 127, 113, 66, 213, 117, 19, 190, 180, 210, 79, 106, 233, 137, 245, 214, 133, 191, 163 }
+                            PasswordHash = new byte[] { 133, 225, 241, 240, 24, 22, 2, 173, 20, 88, 143, 4, 11, 83, 63, 227, 237, 172, 98, 25, 153, 129, 123, 122, 66, 237, 87, 49, 229, 58, 222, 40, 193, 152, 7, 58, 87, 39, 4, 228, 195, 101, 140, 172, 10, 114, 71, 6, 77, 194, 46, 231, 14, 37, 28, 0, 59, 231, 160, 33, 77, 77, 9, 90 },
+                            PasswordSalt = new byte[] { 145, 42, 106, 213, 95, 239, 150, 95, 248, 171, 130, 246, 77, 212, 121, 129, 29, 149, 182, 121, 185, 34, 253, 247, 29, 77, 198, 105, 187, 238, 230, 180, 134, 111, 11, 195, 212, 193, 130, 55, 183, 40, 107, 60, 243, 176, 133, 37, 228, 37, 218, 247, 134, 200, 213, 156, 121, 209, 207, 205, 5, 209, 143, 108, 147, 39, 219, 111, 221, 91, 21, 235, 182, 181, 174, 76, 28, 186, 129, 170, 233, 244, 12, 231, 117, 175, 95, 155, 157, 114, 40, 246, 41, 114, 76, 9, 48, 221, 149, 84, 46, 72, 195, 217, 57, 157, 147, 201, 73, 137, 150, 150, 1, 111, 172, 251, 207, 40, 204, 60, 77, 133, 115, 134, 127, 72, 154, 253 }
                         });
                 });
 
@@ -450,11 +585,22 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("066b1a80-092c-41ef-a69b-a589a1712d8d"),
+                            Id = new Guid("ed397165-3367-4f75-bc09-ead235e4bb32"),
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             OperationClaimId = 1,
-                            UserId = new Guid("0dfbea2d-4703-4751-b1d9-8e00076d977c")
+                            UserId = new Guid("ff3bd80f-bfc4-4e4b-b5ea-d974715a2a12")
                         });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Car", b =>
+                {
+                    b.HasOne("Domain.Entities.Model", "Model")
+                        .WithMany("Cars")
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Model");
                 });
 
             modelBuilder.Entity("Domain.Entities.EmailAuthenticator", b =>
@@ -466,6 +612,33 @@ namespace Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Model", b =>
+                {
+                    b.HasOne("Domain.Entities.Brand", "Brand")
+                        .WithOne("Model")
+                        .HasForeignKey("Domain.Entities.Model", "BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Fuel", "Fuel")
+                        .WithOne("Model")
+                        .HasForeignKey("Domain.Entities.Model", "FuelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Transmission", "Transmission")
+                        .WithOne("Model")
+                        .HasForeignKey("Domain.Entities.Model", "TransmissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Fuel");
+
+                    b.Navigation("Transmission");
                 });
 
             modelBuilder.Entity("Domain.Entities.OtpAuthenticator", b =>
@@ -507,6 +680,26 @@ namespace Persistence.Migrations
                     b.Navigation("OperationClaim");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Brand", b =>
+                {
+                    b.Navigation("Model");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Fuel", b =>
+                {
+                    b.Navigation("Model");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Model", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Transmission", b =>
+                {
+                    b.Navigation("Model");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
