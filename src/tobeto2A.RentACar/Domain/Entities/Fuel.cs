@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Entities;
-public class Brand : Entity<Guid>
+public class Fuel : Entity<Guid>
 {
-    public string Name { get; set; }
-    public string Logo { get; set; }
+    public string Name { get; set; }    
+    
+    public Model? Model { get; set; } = null;  // One to One
 
-    public Brand()
+    public Fuel()
     {
     }
 
