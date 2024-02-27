@@ -12,6 +12,7 @@ public class TransmissionConfiguration : IEntityTypeConfiguration<Transmission>
 {
     public void Configure(EntityTypeBuilder<Transmission> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(i => i.Id);
+        builder.ToTable("Transmissions");
     }
 }

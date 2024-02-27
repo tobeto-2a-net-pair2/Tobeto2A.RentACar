@@ -12,6 +12,8 @@ public class ModelConfiguration : IEntityTypeConfiguration<Model>
 {
     public void Configure(EntityTypeBuilder<Model> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(i => i.Id);
+        builder.ToTable("Models");
     }
+
 }

@@ -12,6 +12,8 @@ public class CarConfiguration : IEntityTypeConfiguration<Car>
 {
     public void Configure(EntityTypeBuilder<Car> builder)
     {
-        throw new NotImplementedException();
+        builder.HasKey(i => i.Id);
+        builder.ToTable("Cars");
     }
+
 }
