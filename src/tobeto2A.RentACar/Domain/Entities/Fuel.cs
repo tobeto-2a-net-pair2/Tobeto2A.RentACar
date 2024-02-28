@@ -10,6 +10,6 @@ public class Fuel : Entity<Guid>
 {
     public string Name { get; set; }
 
+    public Model? Model { get; set; } = null;
 
-  
 }

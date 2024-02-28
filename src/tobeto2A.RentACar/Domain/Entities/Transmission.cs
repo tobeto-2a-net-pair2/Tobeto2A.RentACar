@@ -10,5 +10,5 @@ public class Transmission : Entity<Guid>
 {
     public string Name { get; set; }
 
-    
+    public Model? Model { get; set; } = null;
 }

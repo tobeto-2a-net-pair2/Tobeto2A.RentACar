@@ -21,10 +21,13 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
+
         services.AddScoped<IBrandRepository, BrandRepository>();
         services.AddScoped<IModelRepository, ModelRepository>();
         services.AddScoped<IFuelRepository, FuelRepository>();
         services.AddScoped<ITransmissionRepository, TransmissionRepository>();
+
+
         return services;
     }
 }

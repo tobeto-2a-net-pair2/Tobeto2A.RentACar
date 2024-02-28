@@ -7,6 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Services.Repositories;
-public interface IFuelRepository : IAsyncRepository<Fuel, Guid>, IRepository<Brand, Guid>
+public interface IFuelRepository : IAsyncRepository<Fuel, Guid>, IRepository<Fuel, Guid>
 {
 }
