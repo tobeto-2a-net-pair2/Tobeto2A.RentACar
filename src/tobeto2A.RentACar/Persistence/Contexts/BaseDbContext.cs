@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 namespace Persistence.Contexts;
 
 public class BaseDbContext : DbContext
-{
+{ 
     protected IConfiguration Configuration { get; set; }
     public DbSet<EmailAuthenticator> EmailAuthenticators { get; set; }
     public DbSet<OperationClaim> OperationClaims { get; set; }
