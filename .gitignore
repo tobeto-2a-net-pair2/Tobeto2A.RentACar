@@ -402,3 +402,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 appsettings.Development.json
+/src/tobeto2A.RentACar/Persistence/Migrations/BaseDbContextModelSnapshot.cs
+/src/tobeto2A.RentACar/Persistence/Migrations/BaseDbContextModelSnapshot.cs
+/src/tobeto2A.RentACar/Persistence/Migrations/20240226143233_AddBrand.Designer.cs
+/src/tobeto2A.RentACar/Persistence/Migrations/20240226143233_AddBrand.cs
