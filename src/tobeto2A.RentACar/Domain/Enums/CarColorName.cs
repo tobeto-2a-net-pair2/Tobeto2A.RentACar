@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Enums;
-public enum CarStatus
+public enum CarColorName
 {
-    Available=0,
-    Rented=1,
-    OnService=2
+    Red,
+    Green,
+    Blue,
+    Yellow,
+    Black,
+    White,
 }

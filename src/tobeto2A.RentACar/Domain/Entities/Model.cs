@@ -4,10 +4,10 @@ using NArchitecture.Core.Persistence.Repositories;
 namespace Domain.Entities;
 public class Model:Entity<Guid>
 {
-    public int BrandId { get; set; } 
-    public string Name { get; set; }
-    public int FuelId { get; set; }
-    public int TransmissionId { get; set; }
+    public Guid BrandId { get; set; }  // int?
+    public string Name { get; set; } 
+    public Guid FuelId { get; set; }  // int?
+    public Guid TransmissionId { get; set; }  // int?
     public decimal DailyPrice { get; set; }
     public short Year { get; set; }
 
