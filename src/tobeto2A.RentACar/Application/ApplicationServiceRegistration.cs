@@ -31,7 +31,8 @@ public static class ApplicationServiceRegistration
         ElasticSearchConfig elasticSearchConfig
     )
     {
-        services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());  // AutoMapper'lardan türemiş tüm classları servislere bu satır ekliyor.
+
         services.AddMediatR(configuration =>
         {
             configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
@@ -43,9 +44,10 @@ public static class ApplicationServiceRegistration
             configuration.AddOpenBehavior(typeof(TransactionScopeBehavior<,>));
         });
 
-        services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
+        services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));  // BusinessRules'lardan türemiş tüm classları servislere bu satır ekliyor.
 
-        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());  // Validator'lerden türemiş tüm classları servislere bu satır ekliyor.
+
 
         services.AddSingleton<IMailService, MailKitMailService>(_ => new MailKitMailService(mailSettings));
         services.AddSingleton<ILogger, SerilogFileLogger>(_ => new SerilogFileLogger(fileLogConfiguration));

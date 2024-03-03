@@ -401,7 +401,7 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Hassas Bilgiler veya Gereksiz Bilgiler
+# Githubda Görülmemesi Gereken Hassas Bilgiler veya Gereksiz Bilgiler
 
 appsettings.Development.json
-
+appsettings.Staging.json
