@@ -11,6 +11,6 @@ public class CreateTransmissionCommandValidator : AbstractValidator<CreateTransm
     public CreateTransmissionCommandValidator()
     {
         // Fluent Validation
-        // Buraya RuleFor'ları ekle - TODO
+        // TODO: Buraya RuleFor'ları ekle
     }
 }

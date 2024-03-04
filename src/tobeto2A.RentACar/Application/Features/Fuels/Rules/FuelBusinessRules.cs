@@ -1,4 +1,5 @@
 ﻿using Application.Services.Repositories;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NArchitecture.Core.Application.Rules;
 using System;
 using System.Collections.Generic;
@@ -16,4 +17,7 @@ public class FuelBusinessRules : BaseBusinessRules
     {
         _fuelRepository = fuelRepository;
     }
+
+    
+    // TODO: İş kurallarını buraya ekle.
 }

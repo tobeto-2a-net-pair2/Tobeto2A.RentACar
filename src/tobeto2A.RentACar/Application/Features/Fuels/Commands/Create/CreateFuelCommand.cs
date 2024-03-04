@@ -29,7 +29,7 @@ public class CreateFuelCommand : IRequest<CreatedFuelResponse>
 
         public async Task<CreatedFuelResponse> Handle(CreateFuelCommand request, CancellationToken cancellationToken)
         {
-            // await _fuelBusinessRules."Buraya FuelBusinessRules'ta bir method tanımla - TODO"
+            // TODO: await _fuelBusinessRules."Buraya FuelBusinessRules'ta bir method tanımla"
 
             Fuel fuel = _mapper.Map<Fuel>(request);
 

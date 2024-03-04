@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Features.Fuels.Profiles;
-public class FuelMappingProfiles : Profile
+public class MappingProfiles : Profile
 {
-    public FuelMappingProfiles()
+    public MappingProfiles()
     {
         CreateMap<Fuel, CreateFuelCommand>().ReverseMap();
         CreateMap<Fuel, CreatedFuelResponse>().ReverseMap();

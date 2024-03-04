@@ -18,4 +18,7 @@ public class CarBusinessRules : BaseBusinessRules
     {
         _carRepository = carRepository;
     }
+
+
+    // TODO: İş kurallarını buraya ekle.
 }

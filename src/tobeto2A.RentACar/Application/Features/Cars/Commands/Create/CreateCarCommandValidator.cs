@@ -12,6 +12,6 @@ public class CreateCarCommandValidator : AbstractValidator<CreateCarCommand>
     public CreateCarCommandValidator()
     {
         // Fluent Validation
-        // Buraya RuleFor'ları ekle - TODO
+        // TODO: Buraya RuleFor'ları ekle
     }
 }

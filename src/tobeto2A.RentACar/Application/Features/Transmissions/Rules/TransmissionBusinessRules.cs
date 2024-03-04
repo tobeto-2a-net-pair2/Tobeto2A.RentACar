@@ -15,4 +15,7 @@ public class TransmissionBusinessRules : BaseBusinessRules
     {
         _transmissionRepository = transmissionRepository;
     }
+
+
+    // TODO: İş kurallarını buraya ekle.
 }

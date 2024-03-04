@@ -12,6 +12,6 @@ public class CreateFuelCommandValidator : AbstractValidator<CreateFuelCommand>
     public CreateFuelCommandValidator()
     {
         // Fluent Validation
-        // Buraya RuleFor'ları ekle - TODO
+        // TODO: Buraya RuleFor'ları ekle
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 using Application.Services.AuthenticatorService;
 using Application.Services.AuthService;
 using Application.Services.UsersService;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NArchitecture.Core.Application.Pipelines.Authorization;
 using NArchitecture.Core.Application.Pipelines.Caching;
 using NArchitecture.Core.Application.Pipelines.Logging;
+using NArchitecture.Core.Application.Pipelines.Performance;
 using NArchitecture.Core.Application.Pipelines.Transaction;
 using NArchitecture.Core.Application.Pipelines.Validation;
 using NArchitecture.Core.Application.Rules;
@@ -33,9 +35,13 @@ public static class ApplicationServiceRegistration
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());  // AutoMapper'lardan türemiş tüm classları servislere bu satır ekliyor.
 
+        services.AddScoped<Stopwatch>();
+
         services.AddMediatR(configuration =>
         {
             configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+            configuration.AddOpenBehavior(typeof(PerformanceBehavior<,>));
             configuration.AddOpenBehavior(typeof(AuthorizationBehavior<,>));
             configuration.AddOpenBehavior(typeof(CachingBehavior<,>));
             configuration.AddOpenBehavior(typeof(CacheRemovingBehavior<,>));

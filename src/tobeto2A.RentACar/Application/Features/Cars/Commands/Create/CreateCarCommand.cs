@@ -36,7 +36,7 @@ public class CreateCarCommand : IRequest<CreatedCarResponse>
 
         public async Task<CreatedCarResponse> Handle(CreateCarCommand request, CancellationToken cancellationToken)
         {
-            // await _carBusinessRules."Buraya CarBusinessRules'ta bir method tanımla - TODO"
+            // TODO: await _carBusinessRules."Buraya CarBusinessRules'ta bir method tanımla"
 
             Car car = _mapper.Map<Car>(request);
 

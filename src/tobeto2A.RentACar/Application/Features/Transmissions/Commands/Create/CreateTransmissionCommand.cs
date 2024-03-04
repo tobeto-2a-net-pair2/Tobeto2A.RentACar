@@ -31,7 +31,7 @@ public class CreateTransmissionCommand : IRequest<CreatedTransmissionResponse>
 
         public async Task<CreatedTransmissionResponse> Handle(CreateTransmissionCommand request, CancellationToken cancellationToken)
         {
-            // await _transmissionBusinessRules."Buraya TransmissionBusinessRules'ta bir method tanımla - TODO"
+            // TODO: await _transmissionBusinessRules."Buraya TransmissionBusinessRules'ta bir method tanımla"
 
             Transmission transmission = _mapper.Map<Transmission>(request);
 

@@ -11,9 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Features.Transmissions.Profiles;
-public class TransmissionMappingProfiles : Profile
+public class MappingProfiles : Profile
 {
-    public TransmissionMappingProfiles()
+    public MappingProfiles()
     {
         CreateMap<Transmission, CreateTransmissionCommand>().ReverseMap();
         CreateMap<Transmission, CreatedTransmissionResponse>().ReverseMap();
