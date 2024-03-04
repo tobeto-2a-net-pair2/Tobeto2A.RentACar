@@ -27,4 +27,6 @@ public class BrandBusinessRules : BaseBusinessRules
         if (brandWithSameName is not null)
             throw new BusinessException("Aynı isime sahip bir marka zaten mevcut.");
     }
+
+    
 }
