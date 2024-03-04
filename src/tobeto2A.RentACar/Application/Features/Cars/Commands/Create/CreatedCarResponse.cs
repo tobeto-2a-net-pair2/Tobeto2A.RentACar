@@ -14,5 +14,4 @@ public class CreatedCarResponse
     public string Kilometer { get; set; }
     public short ModelYear { get; set; }
     public string Plate { get; set; }
-
 }

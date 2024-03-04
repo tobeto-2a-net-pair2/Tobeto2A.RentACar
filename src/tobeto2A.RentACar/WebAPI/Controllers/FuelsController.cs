@@ -25,4 +25,3 @@ public class FuelsController : BaseController
         return Ok(response);
     }
 }
-

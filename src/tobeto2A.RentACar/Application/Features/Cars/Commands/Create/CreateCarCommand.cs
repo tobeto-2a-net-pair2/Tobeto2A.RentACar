@@ -20,31 +20,31 @@ public class CreateCarCommand : IRequest<CreatedCarResponse>
     public string Plate { get; set; }
     public string CarState { get; set; }
 
-}
-
-public class CreateCarCommandHandler : IRequestHandler<CreateCarCommand, CreatedCarResponse>
-{
-    private readonly ICarRepository _carRepository;
-    private readonly IMapper _mapper;
-    private readonly CarBusinessRules _carBusinessRules;
-
-    public CreateCarCommandHandler(ICarRepository carRepository, IMapper mapper, CarBusinessRules carBusinessRules)
+    
+    public class CreateCarCommandHandler : IRequestHandler<CreateCarCommand, CreatedCarResponse>
     {
-        _carRepository = carRepository;
-        _mapper = mapper;
-        _carBusinessRules = carBusinessRules;
-    }
+        private readonly ICarRepository _carRepository;
+        private readonly IMapper _mapper;
+        private readonly CarBusinessRules _carBusinessRules;
 
-    public async Task<CreatedCarResponse> Handle(CreateCarCommand request, CancellationToken cancellationToken)
-    {
-        // await _carBusinessRules."Buraya CarBusinessRules'ta bir method tanımla - TODO"
+        public CreateCarCommandHandler(ICarRepository carRepository, IMapper mapper, CarBusinessRules carBusinessRules)
+        {
+            _carRepository = carRepository;
+            _mapper = mapper;
+            _carBusinessRules = carBusinessRules;
+        }
 
-        Car car = _mapper.Map<Car>(request);
+        public async Task<CreatedCarResponse> Handle(CreateCarCommand request, CancellationToken cancellationToken)
+        {
+            // await _carBusinessRules."Buraya CarBusinessRules'ta bir method tanımla - TODO"
 
-        Car addedCar = await _carRepository.AddAsync(car);
+            Car car = _mapper.Map<Car>(request);
 
-        CreatedCarResponse createdCarResponse = _mapper.Map<CreatedCarResponse>(addedCar);
+            Car addedCar = await _carRepository.AddAsync(car);
 
-        return createdCarResponse;
+            CreatedCarResponse createdCarResponse = _mapper.Map<CreatedCarResponse>(addedCar);
+
+            return createdCarResponse;
+        }
     }
 }

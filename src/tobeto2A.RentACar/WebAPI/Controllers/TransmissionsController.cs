@@ -25,4 +25,3 @@ public class TransmissionsController : BaseController
         return Ok(response);
     }
 }
-

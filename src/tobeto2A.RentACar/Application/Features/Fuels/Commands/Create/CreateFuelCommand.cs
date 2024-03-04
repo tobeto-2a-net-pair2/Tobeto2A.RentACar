@@ -13,31 +13,31 @@ namespace Application.Features.Fuels.Commands.Create;
 public class CreateFuelCommand : IRequest<CreatedFuelResponse>
 {
     public string Name { get; set; }
-}
 
-public class CreateFuelCommandHandler : IRequestHandler<CreateFuelCommand, CreatedFuelResponse>
-{
-    private readonly IFuelRepository _fuelRepository;
-    private readonly IMapper _mapper;
-    private readonly FuelBusinessRules _fuelBusinessRules;
-
-    public CreateFuelCommandHandler(IFuelRepository fuelRepository, IMapper mapper, FuelBusinessRules fuelBusinessRules)
+    public class CreateFuelCommandHandler : IRequestHandler<CreateFuelCommand, CreatedFuelResponse>
     {
-        _fuelRepository = fuelRepository;
-        _mapper = mapper;
-        _fuelBusinessRules = fuelBusinessRules;
-    }
+        private readonly IFuelRepository _fuelRepository;
+        private readonly IMapper _mapper;
+        private readonly FuelBusinessRules _fuelBusinessRules;
 
-    public async Task<CreatedFuelResponse> Handle(CreateFuelCommand request, CancellationToken cancellationToken)
-    {
-        // await _fuelBusinessRules."Buraya FuelBusinessRules'ta bir method tanımla - TODO"
+        public CreateFuelCommandHandler(IFuelRepository fuelRepository, IMapper mapper, FuelBusinessRules fuelBusinessRules)
+        {
+            _fuelRepository = fuelRepository;
+            _mapper = mapper;
+            _fuelBusinessRules = fuelBusinessRules;
+        }
 
-        Fuel fuel = _mapper.Map<Fuel>(request);
+        public async Task<CreatedFuelResponse> Handle(CreateFuelCommand request, CancellationToken cancellationToken)
+        {
+            // await _fuelBusinessRules."Buraya FuelBusinessRules'ta bir method tanımla - TODO"
 
-        Fuel addedFuel = await _fuelRepository.AddAsync(fuel);
+            Fuel fuel = _mapper.Map<Fuel>(request);
 
-        CreatedFuelResponse createdFuelResponse = _mapper.Map<CreatedFuelResponse>(addedFuel);
+            Fuel addedFuel = await _fuelRepository.AddAsync(fuel);
 
-        return createdFuelResponse;
+            CreatedFuelResponse createdFuelResponse = _mapper.Map<CreatedFuelResponse>(addedFuel);
+
+            return createdFuelResponse;
+        }
     }
 }

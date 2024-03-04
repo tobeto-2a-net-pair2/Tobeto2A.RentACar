@@ -15,32 +15,31 @@ public class CreateTransmissionCommand : IRequest<CreatedTransmissionResponse>
 {
     public string Name { get; set; }
 
-}
 
-public class CreateTransmissionCommandHandler : IRequestHandler<CreateTransmissionCommand, CreatedTransmissionResponse>
-{
-    private readonly ITransmissionRepository _transmissionRepository;
-    private readonly IMapper _mapper;
-    private readonly TransmissionBusinessRules _transmissionBusinessRules;
-
-    public CreateTransmissionCommandHandler(ITransmissionRepository transmissionRepository, IMapper mapper, TransmissionBusinessRules transmissionBusinessRules)
+    public class CreateTransmissionCommandHandler : IRequestHandler<CreateTransmissionCommand, CreatedTransmissionResponse>
     {
-        _transmissionRepository = transmissionRepository;
-        _mapper = mapper;
-        _transmissionBusinessRules = transmissionBusinessRules;
-    }
+        private readonly ITransmissionRepository _transmissionRepository;
+        private readonly IMapper _mapper;
+        private readonly TransmissionBusinessRules _transmissionBusinessRules;
 
-    public async Task<CreatedTransmissionResponse> Handle(CreateTransmissionCommand request, CancellationToken cancellationToken)
-    {
-        // await _transmissionBusinessRules."Buraya TransmissionBusinessRules'ta bir method tanımla - TODO"
+        public CreateTransmissionCommandHandler(ITransmissionRepository transmissionRepository, IMapper mapper, TransmissionBusinessRules transmissionBusinessRules)
+        {
+            _transmissionRepository = transmissionRepository;
+            _mapper = mapper;
+            _transmissionBusinessRules = transmissionBusinessRules;
+        }
 
-        Transmission transmission = _mapper.Map<Transmission>(request);
+        public async Task<CreatedTransmissionResponse> Handle(CreateTransmissionCommand request, CancellationToken cancellationToken)
+        {
+            // await _transmissionBusinessRules."Buraya TransmissionBusinessRules'ta bir method tanımla - TODO"
 
-        Transmission addedTransmission = await _transmissionRepository.AddAsync(transmission);
+            Transmission transmission = _mapper.Map<Transmission>(request);
 
-        CreatedTransmissionResponse createdTransmissionResponse = _mapper.Map<CreatedTransmissionResponse>(addedTransmission);
+            Transmission addedTransmission = await _transmissionRepository.AddAsync(transmission);
 
-        return createdTransmissionResponse;
+            CreatedTransmissionResponse createdTransmissionResponse = _mapper.Map<CreatedTransmissionResponse>(addedTransmission);
+
+            return createdTransmissionResponse;
+        }
     }
 }
-

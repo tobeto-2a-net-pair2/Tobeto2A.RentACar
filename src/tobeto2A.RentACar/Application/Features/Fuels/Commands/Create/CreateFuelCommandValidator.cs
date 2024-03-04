@@ -15,6 +15,3 @@ public class CreateFuelCommandValidator : AbstractValidator<CreateFuelCommand>
         // Buraya RuleFor'ları ekle - TODO
     }
 }
-
-
-

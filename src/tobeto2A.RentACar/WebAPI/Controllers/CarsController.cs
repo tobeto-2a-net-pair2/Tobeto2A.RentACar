@@ -25,5 +25,3 @@ public class CarsController : BaseController
         return Ok(response);
     }
 }
-
-
