@@ -13,6 +13,7 @@ public class GetListBrandQuery : IRequest<GetListResponse<GetListBrandItemDto>>
 
     
     
+    
     public PageRequest PageRequest { get; set; }
 
     public class GetListBrandQueryHandler(IBrandRepository brandRepositoryi IMapper mapper)
