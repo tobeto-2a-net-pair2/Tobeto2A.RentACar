@@ -21,6 +21,11 @@ using NArchitecture.Core.Localization.Resource.Yaml.DependencyInjection;
 using NArchitecture.Core.Mailing;
 using NArchitecture.Core.Mailing.MailKit;
 using NArchitecture.Core.Security.DependencyInjection;
+using Application.Services.Models;
+using Application.Services.Customers;
+using Application.Services.CorporateCustomers;
+using Application.Services.IndividualCustomers;
+
 
 namespace Application;
 
@@ -62,10 +67,14 @@ public static class ApplicationServiceRegistration
         services.AddScoped<IAuthService, AuthManager>();
         services.AddScoped<IAuthenticatorService, AuthenticatorManager>();
         services.AddScoped<IUserService, UserManager>();
-
+        services.AddScoped<IModelService, ModelManager>();
         services.AddYamlResourceLocalization();
 
         services.AddSecurityServices<Guid, int>();
+
+        services.AddScoped<ICustomerService, CustomerManager>();
+        services.AddScoped<ICorporateCustomerService, CorporateCustomerManager>();
+        services.AddScoped<IIndividualCustomerService, IndividualCustomerManager>();
 
         return services;
     }

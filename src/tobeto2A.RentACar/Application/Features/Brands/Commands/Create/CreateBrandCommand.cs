@@ -20,7 +20,7 @@ public class CreateBrandCommand : IRequest<CreatedBrandResponse>, ISecuredReques
     public string Logo { get; set; }
 
 
-    // || -> Veya var roller arasında. İkisi de şart değil.
+    // || -> Veya var rollerin arasında. İkisi de aynı an da olmak zorunda değil.
     public string[] Roles => new string[] { BrandsOperationClaims.Write, BrandsOperationClaims.Create };
 
     public int Interval => 3;

@@ -12,7 +12,7 @@ public static class PersistenceServiceRegistration
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("BaseDb")));
+        services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("nRentACarMSSQL22")));
         services.AddDbMigrationApplier(buildServices => buildServices.GetRequiredService<BaseDbContext>());
 
         services.AddScoped<IEmailAuthenticatorRepository, EmailAuthenticatorRepository>();
@@ -26,6 +26,10 @@ public static class PersistenceServiceRegistration
         services.AddScoped<ICarRepository, CarRepository>();
         services.AddScoped<IFuelRepository, FuelRepository>();
         services.AddScoped<ITransmissionRepository, TransmissionRepository>();
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<ICorporateCustomerRepository, CorporateCustomerRepository>();
+        services.AddScoped<IIndividualCustomerRepository, IndividualCustomerRepository>();
+        
         return services;
     }
 }
