@@ -6,6 +6,8 @@ using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NArchitecture.Core.Security.Constants;
+using Application.Features.CarColors.Constants;
+using Application.Features.Models.Constants;
 
 namespace Persistence.EntityConfigurations;
 
@@ -97,6 +99,34 @@ public class OperationClaimConfiguration : IEntityTypeConfiguration<OperationCla
         );
         #endregion
 
+        
+        #region CarColors
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = CarColorsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = CarColorsOperationClaims.Read },
+                new() { Id = ++lastId, Name = CarColorsOperationClaims.Write },
+                new() { Id = ++lastId, Name = CarColorsOperationClaims.Create },
+                new() { Id = ++lastId, Name = CarColorsOperationClaims.Update },
+                new() { Id = ++lastId, Name = CarColorsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
+        
+        #region Models
+        featureOperationClaims.AddRange(
+            [
+                new() { Id = ++lastId, Name = ModelsOperationClaims.Admin },
+                new() { Id = ++lastId, Name = ModelsOperationClaims.Read },
+                new() { Id = ++lastId, Name = ModelsOperationClaims.Write },
+                new() { Id = ++lastId, Name = ModelsOperationClaims.Create },
+                new() { Id = ++lastId, Name = ModelsOperationClaims.Update },
+                new() { Id = ++lastId, Name = ModelsOperationClaims.Delete },
+            ]
+        );
+        #endregion
+        
         return featureOperationClaims;
     }
 #pragma warning restore S1854 // Unused assignments should be removed

@@ -6,6 +6,8 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore.Metadata;
 using NArchitecture.Core.Application.Pipelines.Authorization;
+using NArchitecture.Core.Application.Pipelines.Logging;
+using NArchitecture.Core.Application.Pipelines.Performance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +15,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Features.Brands.Commands.Create;
-public class CreateBrandCommand : IRequest<CreatedBrandResponse>, ISecuredRequest
+public class CreateBrandCommand : IRequest<CreatedBrandResponse>, ISecuredRequest, ILoggableRequest, IIntervalRequest
 {
     public string Name { get; set; }
     public string Logo { get; set; }
 
     // ||
     public string[] Roles => new string[] {BrandsOperationClaims.Write, BrandsOperationClaims.Create};
+
+    public int Interval => 3;
+
     //Brand.Update, Brand.Add, Brand.Delete, Brand.General
 
     //Inner class
@@ -38,6 +43,8 @@ public class CreateBrandCommand : IRequest<CreatedBrandResponse>, ISecuredReques
 
         public async Task<CreatedBrandResponse> Handle(CreateBrandCommand request, CancellationToken cancellationToken)
         {
+            await Task.Delay(5000);
+            //Thread.Sleep(5000) => Sync
             await _brandBusinessRules.CarShouldNotExistsWithSameName(request.Name);
             Brand brand = _mapper.Map<Brand>(request);
 

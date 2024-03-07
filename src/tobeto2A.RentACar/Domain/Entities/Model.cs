@@ -8,7 +8,7 @@ public class Model:Entity<Guid>
     public string Name { get; set; } 
     public Guid FuelId { get; set; }  // int?
     public Guid TransmissionId { get; set; }  // int?
-    //public decimal DailyPrice { get; set; }
+  public decimal DailyPrice { get; set; }
     public short Year { get; set; }
 
     public Brand? Brand { get; set; } = null; 
