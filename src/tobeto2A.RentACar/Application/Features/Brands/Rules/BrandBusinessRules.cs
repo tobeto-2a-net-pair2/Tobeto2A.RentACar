@@ -1,4 +1,5 @@
 ﻿using Application.Features.Brands.Commands.Create;
+using Application.Features.Brands.Constants;
 using Application.Services.Repositories;
 using Domain.Entities;
 using NArchitecture.Core.Application.Rules;
@@ -25,7 +26,7 @@ public class BrandBusinessRules : BaseBusinessRules
         Brand? brandWithSameName = await _brandRepository.GetAsync(b => b.Name == name);
 
         if (brandWithSameName is not null)
-            throw new BusinessException("Aynı isime sahip bir marka zaten mevcut.");
+            throw new BusinessException(BrandMessages.BrandAlreadyExist);
     }
 
     

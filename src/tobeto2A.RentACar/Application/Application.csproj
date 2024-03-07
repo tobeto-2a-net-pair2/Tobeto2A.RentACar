@@ -25,7 +25,4 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\Brands\Constants\" />
-  </ItemGroup>
 </Project>

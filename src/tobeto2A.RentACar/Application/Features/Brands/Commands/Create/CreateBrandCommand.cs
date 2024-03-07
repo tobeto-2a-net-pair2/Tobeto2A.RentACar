@@ -1,4 +1,5 @@
-﻿using Application.Features.Brands.Rules;
+﻿using Application.Features.Brands.Constants;
+using Application.Features.Brands.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
@@ -17,7 +18,8 @@ public class CreateBrandCommand : IRequest<CreatedBrandResponse>, ISecuredReques
     public string Name { get; set; }
     public string Logo { get; set; }
 
-    public string[] Roles => new string[] {"Brand.Add"};
+    // ||
+    public string[] Roles => new string[] {BrandsOperationClaims.Write, BrandsOperationClaims.Create};
     //Brand.Update, Brand.Add, Brand.Delete, Brand.General
 
     //Inner class
